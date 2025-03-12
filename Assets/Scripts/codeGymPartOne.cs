@@ -22,6 +22,9 @@ public class codeGymPartOne : MonoBehaviour
         
     }
 
-    
+    public void mouseJustEntered()
+    {
+        
+    }
 
 }
