@@ -5,17 +5,16 @@ using UnityEngine;
 
 public class bullet : MonoBehaviour
 {
-    public GameObject bulletPrefab;
+    public float bulletSPD = 10f;
+    private Vector3 bulletDir;
 
-    float bulletSPD = 5f;
-    float bulletATK = 1f;
-    float bulletDespawn = 5f;
-
-    Vector3 mousePos;
-    public void fireBullet(Vector3 direction, float bulletSPD, float bulletDespawn)
+    public void bulletDirection(Vector3 direction)
     {
-
+        bulletDir = direction.normalized;
     }
 
-
+    private void Update()
+    {
+        transform.position += bulletDir * bulletSPD * Time.deltaTime;
+    }
 }
