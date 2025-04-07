@@ -7,7 +7,8 @@ public class playerController : MonoBehaviour
 {
     public float playerSPD = 5.0f;
     public GameObject bulletPrefab;
-    Vector3 playerPos;
+    public Vector3 playerPosition;
+    //Vector3 playerPos;
 
     // Start is called before the first frame update
     void Start()

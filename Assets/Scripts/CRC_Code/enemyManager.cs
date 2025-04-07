@@ -3,9 +3,16 @@ using UnityEngine;
 
 public class enemyManager : MonoBehaviour
 {
+    //public GameObject playerObject;
     public GameObject enemyPrefab;
-    private IEnumerator coroutine;
+    public GameObject playerObject;
+    GameObject spawnedEnemy;
+
+    private Vector3 enemyDir;
+    float enemySPD = 1.5f;
+
     bool gameActive;
+    //bool enemyAlive = true;
 
     // Start is called before the first frame update
     void Start()
@@ -17,15 +24,28 @@ public class enemyManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (spawnedEnemy != null)
+        {
+            enemyMovement();
+        }
+
+
 
     }
 
     IEnumerator spawnEnemies(float spawnTime)
     {
-        while (gameActive == true)
+        while (gameActive)
         {
             Vector3 spawnPosition = spawnSpace();
-            GameObject enemySpawn = Instantiate(enemyPrefab, spawnPosition, Quaternion.identity);
+            GameObject enemyInstance = Instantiate(enemyPrefab, spawnPosition, Quaternion.identity);
+
+            // Get the EnemyMovement component from the spawned enemy
+            EnemyMovement movementScript = enemyInstance.GetComponent<EnemyMovement>();
+
+            // Set the playerObject field from your manager (which is a scene object)
+            movementScript.playerObject = playerObject;
+
             yield return new WaitForSeconds(spawnTime);
         }
     }
@@ -61,4 +81,20 @@ public class enemyManager : MonoBehaviour
 
         return spawnA;
     }
+
+    public void enemyMovement()
+    {
+
+            Vector3 playerPosition = playerObject.transform.position;
+            Vector3 spawnLoc = spawnedEnemy.transform.position;
+
+            //this will be used to calculate the direction from PLAYER <---> ENEMY LOCATION when the mouse gets clicked
+            Vector3 enemyDir = (playerPosition - spawnLoc).normalized;
+
+            Vector3 moveEnemy = enemyDir * enemySPD * Time.deltaTime;
+
+            spawnedEnemy.transform.position += moveEnemy;
+
+    }
+
 }

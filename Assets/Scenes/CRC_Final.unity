@@ -229,6 +229,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerSPD: 5
   bulletPrefab: {fileID: 5253722983896125339, guid: c182ff0aa827a9f4d9925e45cf3bd8f6, type: 3}
+  playerPosition: {x: 0, y: 0, z: 0}
 --- !u!212 &152865526
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -332,8 +333,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 480, y: -485.71}
-  m_SizeDelta: {x: 960, y: 108.57}
+  m_AnchoredPosition: {x: 199.99, y: -184.67}
+  m_SizeDelta: {x: 399.99, y: 80.715}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &209299614
 MonoBehaviour:
@@ -526,7 +527,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
@@ -556,7 +557,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 0
-  m_UpdateRectTransformForStandalone: 0
+  m_UpdateRectTransformForStandalone: 1
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -943,7 +944,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.25}
   m_AnchorMax: {x: 1, y: 0.75}
-  m_AnchoredPosition: {x: -5, y: 0}
+  m_AnchoredPosition: {x: -4.9999695, y: 0}
   m_SizeDelta: {x: -20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1398403746
@@ -1057,8 +1058,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -480.00015, y: -485.71}
-  m_SizeDelta: {x: 960, y: 108.57}
+  m_AnchoredPosition: {x: -199.99, y: -184.67}
+  m_SizeDelta: {x: 400.01, y: 80.72}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1401540596
 MonoBehaviour:
@@ -1317,6 +1318,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 3568614967299884480, guid: 0d501c081ee368d4bb9419db801fb9ca, type: 3}
+  playerObject: {fileID: 152865524}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
