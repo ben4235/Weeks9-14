@@ -5,14 +5,18 @@ using UnityEngine;
 
 public class playerController : MonoBehaviour
 {
+    public bulletManager bulletManager;
+
     public float playerSPD = 5.0f;
     public GameObject bulletPrefab;
     public Vector3 playerPosition;
     //Vector3 playerPos;
+    public GameObject newBullet;
 
     // Start is called before the first frame update
     void Start()
     {
+
     }
 
     // Update is called once per frame
@@ -28,13 +32,6 @@ public class playerController : MonoBehaviour
 
         playerPosition += (playerMovement * playerSPD * Time.deltaTime);
         transform.position = playerPosition;
-
-
-        if (Input.GetMouseButtonDown(0))
-        {
-            fireBullet();
-        }
-
     }
 
     public void fireBullet()
@@ -48,6 +45,10 @@ public class playerController : MonoBehaviour
         //this will instantiate the bullet on the position of the player
         GameObject newBullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
 
+        bulletManager.addBullets(newBullet);
+        // You might want to set up bullet movement/direction here.
+
+
         //this will be used to calculate the direction from PLAYER <---> MOUSE LOCATION when the mouse gets clicked
         Vector3 direction = (mousePos - playerPosition).normalized;
 
@@ -55,6 +56,7 @@ public class playerController : MonoBehaviour
 
         //finally, this will be used to send the information of the direction to the bullet script / direction class. 
         newBullet.GetComponent<bullet>().bulletDirection(direction);
-    }    
+        newBullet.GetComponent<collisionManager>().bulletEnemyCollision(newBullet);
+    }
 
 }

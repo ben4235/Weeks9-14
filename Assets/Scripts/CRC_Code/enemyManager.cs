@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class enemyManager : MonoBehaviour
@@ -7,12 +8,22 @@ public class enemyManager : MonoBehaviour
     public GameObject enemyPrefab;
     public GameObject playerObject;
     GameObject spawnedEnemy;
+    public GameObject enemyInstance;
 
     private Vector3 enemyDir;
     float enemySPD = 1.5f;
 
     bool gameActive;
     //bool enemyAlive = true;
+
+
+
+    public List<GameObject> enemyList = new List<GameObject>();
+
+    public void addEnemy(GameObject enemy)
+    {
+        enemyList.Add(enemy);
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -39,6 +50,7 @@ public class enemyManager : MonoBehaviour
         {
             Vector3 spawnPosition = spawnSpace();
             GameObject enemyInstance = Instantiate(enemyPrefab, spawnPosition, Quaternion.identity);
+            enemyManager.addEnemy(enemy);
 
             // Get the EnemyMovement component from the spawned enemy
             EnemyMovement movementScript = enemyInstance.GetComponent<EnemyMovement>();
@@ -66,7 +78,7 @@ public class enemyManager : MonoBehaviour
         {
             return spawnA;
         }
-        else if (randomSpawn == 1) 
+        else if (randomSpawn == 1)
         {
             return spawnB;
         }
@@ -85,15 +97,15 @@ public class enemyManager : MonoBehaviour
     public void enemyMovement()
     {
 
-            Vector3 playerPosition = playerObject.transform.position;
-            Vector3 spawnLoc = spawnedEnemy.transform.position;
+        Vector3 playerPosition = playerObject.transform.position;
+        Vector3 spawnLoc = spawnedEnemy.transform.position;
 
-            //this will be used to calculate the direction from PLAYER <---> ENEMY LOCATION when the mouse gets clicked
-            Vector3 enemyDir = (playerPosition - spawnLoc).normalized;
+        //this will be used to calculate the direction from PLAYER <---> ENEMY LOCATION when the mouse gets clicked
+        Vector3 enemyDir = (playerPosition - spawnLoc).normalized;
 
-            Vector3 moveEnemy = enemyDir * enemySPD * Time.deltaTime;
+        Vector3 moveEnemy = enemyDir * enemySPD * Time.deltaTime;
 
-            spawnedEnemy.transform.position += moveEnemy;
+        spawnedEnemy.transform.position += moveEnemy;
 
     }
 
