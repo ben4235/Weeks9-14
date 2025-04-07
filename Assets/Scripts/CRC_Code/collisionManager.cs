@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class collisionManager : MonoBehaviour
 {
+    private playerController player;
+    private bullet bullet;
+    private enemyManager enemy;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -14,5 +18,10 @@ public class collisionManager : MonoBehaviour
     void Update()
     {
         
+    }
+
+    void bulletEnemyCollision()
+    {
+
     }
 }
